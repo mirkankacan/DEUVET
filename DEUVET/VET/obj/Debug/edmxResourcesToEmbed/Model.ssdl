@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="vetdatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="hayvanlar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="Tür" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cins" Type="varchar" MaxLength="50" />
+    <Property Name="Hastalık" Type="text" Nullable="false" />
+    <Property Name="Parazit" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Karma1" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Karma2" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Kuduz" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Lösemi" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mantar" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="kisiler">
+    <Key>
+      <PropertyRef Name="TC" />
+    </Key>
+    <Property Name="TC" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="Ad" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Soyad" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Telefon" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Tarih" Type="date" />
+    <Property Name="Ücret" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_hayvanlar_kisiler">
+    <End Role="kisiler" Type="Self.kisiler" Multiplicity="1" />
+    <End Role="hayvanlar" Type="Self.hayvanlar" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="kisiler">
+        <PropertyRef Name="TC" />
+      </Principal>
+      <Dependent Role="hayvanlar">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="vetdatabaseModelStoreContainer">
+    <EntitySet Name="hayvanlar" EntityType="Self.hayvanlar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kisiler" EntityType="Self.kisiler" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_hayvanlar_kisiler" Association="Self.FK_hayvanlar_kisiler">
+      <End Role="kisiler" EntitySet="kisiler" />
+      <End Role="hayvanlar" EntitySet="hayvanlar" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

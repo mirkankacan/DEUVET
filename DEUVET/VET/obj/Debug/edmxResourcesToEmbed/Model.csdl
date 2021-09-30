@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="vetdatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="hayvanlar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Tür" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cins" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Hastalık" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Parazit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Karma1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Karma2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Kuduz" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Lösemi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Mantar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="kisiler" Relationship="Self.FK_hayvanlar_kisiler" FromRole="hayvanlar" ToRole="kisiler" />
+  </EntityType>
+  <EntityType Name="kisiler">
+    <Key>
+      <PropertyRef Name="TC" />
+    </Key>
+    <Property Name="TC" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefon" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Tarih" Type="DateTime" Precision="0" />
+    <Property Name="Ücret" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="hayvanlar" Relationship="Self.FK_hayvanlar_kisiler" FromRole="kisiler" ToRole="hayvanlar" />
+  </EntityType>
+  <Association Name="FK_hayvanlar_kisiler">
+    <End Role="kisiler" Type="Self.kisiler" Multiplicity="1" />
+    <End Role="hayvanlar" Type="Self.hayvanlar" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="kisiler">
+        <PropertyRef Name="TC" />
+      </Principal>
+      <Dependent Role="hayvanlar">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="vetdatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="hayvanlars" EntityType="Self.hayvanlar" />
+    <EntitySet Name="kisilers" EntityType="Self.kisiler" />
+    <AssociationSet Name="FK_hayvanlar_kisiler" Association="Self.FK_hayvanlar_kisiler">
+      <End Role="kisiler" EntitySet="kisilers" />
+      <End Role="hayvanlar" EntitySet="hayvanlars" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

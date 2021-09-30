@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="vetdatabaseModelStoreContainer" CdmEntityContainer="vetdatabaseEntities">
+    <EntitySetMapping Name="hayvanlars">
+      <EntityTypeMapping TypeName="vetdatabaseModel.hayvanlar">
+        <MappingFragment StoreEntitySet="hayvanlar">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Tür" ColumnName="Tür" />
+          <ScalarProperty Name="Cins" ColumnName="Cins" />
+          <ScalarProperty Name="Hastalık" ColumnName="Hastalık" />
+          <ScalarProperty Name="Parazit" ColumnName="Parazit" />
+          <ScalarProperty Name="Karma1" ColumnName="Karma1" />
+          <ScalarProperty Name="Karma2" ColumnName="Karma2" />
+          <ScalarProperty Name="Kuduz" ColumnName="Kuduz" />
+          <ScalarProperty Name="Lösemi" ColumnName="Lösemi" />
+          <ScalarProperty Name="Mantar" ColumnName="Mantar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kisilers">
+      <EntityTypeMapping TypeName="vetdatabaseModel.kisiler">
+        <MappingFragment StoreEntitySet="kisiler">
+          <ScalarProperty Name="TC" ColumnName="TC" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+          <ScalarProperty Name="Ücret" ColumnName="Ücret" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

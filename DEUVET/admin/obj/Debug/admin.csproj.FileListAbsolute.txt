@@ -1,0 +1,10 @@
+C:\Users\kacan\Desktop\2018707038_Mirkan_Kaçan_Bitirme_Projesi\admin\admin\bin\Debug\admin.exe.config
+C:\Users\kacan\Desktop\2018707038_Mirkan_Kaçan_Bitirme_Projesi\admin\admin\bin\Debug\admin.exe
+C:\Users\kacan\Desktop\2018707038_Mirkan_Kaçan_Bitirme_Projesi\admin\admin\bin\Debug\admin.pdb
+C:\Users\kacan\Desktop\2018707038_Mirkan_Kaçan_Bitirme_Projesi\admin\admin\obj\Debug\admin.csproj.AssemblyReference.cache
+C:\Users\kacan\Desktop\2018707038_Mirkan_Kaçan_Bitirme_Projesi\admin\admin\obj\Debug\admin.Form1.resources
+C:\Users\kacan\Desktop\2018707038_Mirkan_Kaçan_Bitirme_Projesi\admin\admin\obj\Debug\admin.Properties.Resources.resources
+C:\Users\kacan\Desktop\2018707038_Mirkan_Kaçan_Bitirme_Projesi\admin\admin\obj\Debug\admin.csproj.GenerateResource.cache
+C:\Users\kacan\Desktop\2018707038_Mirkan_Kaçan_Bitirme_Projesi\admin\admin\obj\Debug\admin.csproj.CoreCompileInputs.cache
+C:\Users\kacan\Desktop\2018707038_Mirkan_Kaçan_Bitirme_Projesi\admin\admin\obj\Debug\admin.exe
+C:\Users\kacan\Desktop\2018707038_Mirkan_Kaçan_Bitirme_Projesi\admin\admin\obj\Debug\admin.pdb

@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="vetdatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="hayvanlar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="Tür" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cins" Type="varchar" MaxLength="50" />
+          <Property Name="Hastalık" Type="text" Nullable="false" />
+          <Property Name="Parazit" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Karma1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Karma2" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Kuduz" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lösemi" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mantar" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="kisiler">
+          <Key>
+            <PropertyRef Name="TC" />
+          </Key>
+          <Property Name="TC" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="Ad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Soyad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefon" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Tarih" Type="date" />
+          <Property Name="Ücret" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_hayvanlar_kisiler">
+          <End Role="kisiler" Type="Self.kisiler" Multiplicity="1" />
+          <End Role="hayvanlar" Type="Self.hayvanlar" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="kisiler">
+              <PropertyRef Name="TC" />
+            </Principal>
+            <Dependent Role="hayvanlar">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="vetdatabaseModelStoreContainer">
+          <EntitySet Name="hayvanlar" EntityType="Self.hayvanlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kisiler" EntityType="Self.kisiler" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_hayvanlar_kisiler" Association="Self.FK_hayvanlar_kisiler">
+            <End Role="kisiler" EntitySet="kisiler" />
+            <End Role="hayvanlar" EntitySet="hayvanlar" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="vetdatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="hayvanlar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tür" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cins" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Hastalık" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Parazit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Karma1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Karma2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Kuduz" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Lösemi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mantar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="kisiler" Relationship="Self.FK_hayvanlar_kisiler" FromRole="hayvanlar" ToRole="kisiler" />
+        </EntityType>
+        <EntityType Name="kisiler">
+          <Key>
+            <PropertyRef Name="TC" />
+          </Key>
+          <Property Name="TC" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefon" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
+          <Property Name="Ücret" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="hayvanlar" Relationship="Self.FK_hayvanlar_kisiler" FromRole="kisiler" ToRole="hayvanlar" />
+        </EntityType>
+        <Association Name="FK_hayvanlar_kisiler">
+          <End Role="kisiler" Type="Self.kisiler" Multiplicity="1" />
+          <End Role="hayvanlar" Type="Self.hayvanlar" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="kisiler">
+              <PropertyRef Name="TC" />
+            </Principal>
+            <Dependent Role="hayvanlar">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="vetdatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="hayvanlars" EntityType="Self.hayvanlar" />
+          <EntitySet Name="kisilers" EntityType="Self.kisiler" />
+          <AssociationSet Name="FK_hayvanlar_kisiler" Association="Self.FK_hayvanlar_kisiler">
+            <End Role="kisiler" EntitySet="kisilers" />
+            <End Role="hayvanlar" EntitySet="hayvanlars" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="vetdatabaseModelStoreContainer" CdmEntityContainer="vetdatabaseEntities">
+          <EntitySetMapping Name="hayvanlars">
+            <EntityTypeMapping TypeName="vetdatabaseModel.hayvanlar">
+              <MappingFragment StoreEntitySet="hayvanlar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Tür" ColumnName="Tür" />
+                <ScalarProperty Name="Cins" ColumnName="Cins" />
+                <ScalarProperty Name="Hastalık" ColumnName="Hastalık" />
+                <ScalarProperty Name="Parazit" ColumnName="Parazit" />
+                <ScalarProperty Name="Karma1" ColumnName="Karma1" />
+                <ScalarProperty Name="Karma2" ColumnName="Karma2" />
+                <ScalarProperty Name="Kuduz" ColumnName="Kuduz" />
+                <ScalarProperty Name="Lösemi" ColumnName="Lösemi" />
+                <ScalarProperty Name="Mantar" ColumnName="Mantar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kisilers">
+            <EntityTypeMapping TypeName="vetdatabaseModel.kisiler">
+              <MappingFragment StoreEntitySet="kisiler">
+                <ScalarProperty Name="TC" ColumnName="TC" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Ücret" ColumnName="Ücret" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
